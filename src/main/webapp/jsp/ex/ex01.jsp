@@ -38,7 +38,7 @@
 	
 	<h2> 메소드 만들기</h2>
 	
-	<%--hello world 를 return하는 메소드 --%>
+	<%--hello world 를 return하는 메소드 --%> 
 	
 	<%! 
 		public String getHelloWorld(){
