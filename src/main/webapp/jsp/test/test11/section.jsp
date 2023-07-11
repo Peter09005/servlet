@@ -51,21 +51,10 @@ list.add(map);
 	</thead>
 	<tbody>
 		<%
+		// 첫 페이지  >> type 이 없는게 자연스럽기 떄문에 처음에는 null값으로 설정해두면된다. 
 		String type  = request.getParameter("type");
-		if(type == null){
-			for(Map <String,String> channel : list){
-				%>
-				<tr>
-					<td><%= channel.get("ch") %></td>
-					<td><%= channel.get("name")%></td>
-					<td><%= channel.get("category") %>
-				</tr>
-			<%
-			}
-		}
-		else{
 		for(Map <String,String> channel : list){
-			if(channel.get("category").equals(type)){
+			if(channel.get("category").equals(type) || type == null){
 				%>
 				<tr>
 					<td><%= channel.get("ch") %></td>
@@ -75,8 +64,6 @@ list.add(map);
 		<%
 				}
 			}
-		}
-			
 			%>
 	</tbody>
 </table>
