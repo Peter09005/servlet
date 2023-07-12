@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+.wrap{
+	margin : auto;
+	width: 1400px;
+	height: 1000px;
+
+}
+
+header{
+	height : 80px;
+}
+
+header > .logo{
+	width : 200px;
+}
+
+header > .search{
+	width: 1200px
+}
+
+header > .input{
+	height: 50px;
+}
+
+nav{
+	height : 70px;
+}
