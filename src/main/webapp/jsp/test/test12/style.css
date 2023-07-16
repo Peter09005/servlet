@@ -1,1 +1,33 @@
+<<<<<<< HEAD
 @charset "UTF-8";
+=======
+@charset "UTF-8";
+
+
+.wrap{
+	margin : auto;
+	width: 1400px;
+	height: 1000px;
+
+}
+
+header{
+	height : 80px;
+}
+
+header > .logo{
+	width : 200px;
+}
+
+header > .search{
+	width: 1200px
+}
+
+header > .input{
+	height: 50px;
+}
+
+nav{
+	height : 70px;
+}
+>>>>>>> 43a76f0ae5d8fb8f88a416d3d7e6cb63993c2d9d

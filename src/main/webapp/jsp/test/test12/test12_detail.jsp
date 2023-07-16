@@ -1,51 +1,9 @@
-<<<<<<< HEAD
-=======
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/jsp/test/test12/style.css">
 
->>>>>>> 43a76f0ae5d8fb8f88a416d3d7e6cb63993c2d9d
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<<<<<<< HEAD
-<title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<title>멜롱</title>
-</head>
-<body>
-<%	String id = request.getParameter("id");
-	if(id == null){
-%>
-	<div class="container">
-		<jsp:include page="header.jsp" />
-		<jsp:include page="menu.jsp" />
-		<jsp:include page="content.jsp" />
-		<jsp:include page="section.jsp" />
-		<jsp:include page="footer.jsp" />
-	</div>
-<%}%>
-	<%if(id != null){%>
-	<div class="container">
-		<jsp:include page="header.jsp" />
-		<jsp:include page="menu.jsp" />
-		<jsp:include page="content_1.jsp" flush="false">
-			<jsp:param name="id" value="<%=id%>"/>
-		</jsp:include>
-		<jsp:include page="footer.jsp" />
-	</div>
-	<%}%>
-=======
-<title>Melong</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
 <%@ page import = "java.util.*" %>
 <%
 //아티스트 정보 
-
  Map<String, Object> artistInfo = new HashMap<>();
  artistInfo.put("name", "아이유");
  artistInfo.put("debute", 2008);
@@ -121,51 +79,57 @@
  musicInfo.put("composer", "아이유,이종훈,이채규");
  musicInfo.put("lyricist", "아이유");
  musicList.add(musicInfo);
- 
-
 %>
-<div class="wrap">
+<%!
+String getTime(int sec){
+	int min = sec/60;
+	int second = sec%60;
+	String time = min+":"+second;
+	return time;
+}
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="wrap">
 		<jsp:include page="header.jsp" />
 		<jsp:include page="menu.jsp" />
-			<div class="border border-success">
-		<div class="m-4 d-flex">
-			<div>
-				<img width= 230px src = "<%=artistInfo.get("photo") %>">
-			</div>
-			<div class="mx-4">
-				<h1><%= artistInfo.get("name")%></h1>
-				<div><%=artistInfo.get("agency") %></div>
-				<div><%=artistInfo.get("debute") %></div>
-			</div>
+		<div><h2>곡 정보</h2></div>
+		<% int id = Integer.parseInt(request.getParameter("id"));
+		   for(Map <String,Object> music : musicList){
+			   if((int)music.get("id") == id){
+				   %>
+				   <div class="border border-success">
+				   		<div class="m-4 d-flex">
+				   		<img width="300px" src = "<%= music.get("thumbnail")%>">
+					   		<div class="mx-4">
+					   			<div class="display-2"><%=music.get("title")%></div>
+					   			<div class="text-success"><%=music.get("singer")%></div>
+					   			<div class="mt-3">
+					   				<pre>앨범       <%=music.get("album")%></pre>
+					   				<pre>재생시간    <%=getTime((int)music.get("time"))%></pre>
+					   				<pre>작곡가     <%=music.get("composer")%></pre>
+					   				<pre>작사가     <%=music.get("lyricist")%></pre>
+					   			</div>
+					   		</div>
+				   		</div>
+				   </div>
+				   <%
+			   }
+		   }
+		%>
+		<div class="mt-5">
+			<h2>가사</h2>
+			<hr>
+			<div>가사 정보 없음</div>
 		</div>
-	</div>
-	<section class="mt-3">
-		<h2>곡 목록</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>no</th>
-					<th>제목</th>
-					<th>앨범</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-				for(Map <String,Object> Info : musicList){
-				%>
-				<tr>
-					<td><%=Info.get("id")%></td>
-					<td><a href="/jsp/test/test12/test12_detail.jsp?id=<%=Info.get("id")%>"><%=Info.get("title")%></a></td>
-					<td><%=Info.get("album")%></td>
-				</tr>
-				<%
-				}
-				%>
-			</tbody>
-		</table>
-	</section>
-	<jsp:include page="footer.jsp" />
-</div>
->>>>>>> 43a76f0ae5d8fb8f88a416d3d7e6cb63993c2d9d
+		<jsp:include page="footer.jsp" />
+		</div>
 </body>
 </html>
